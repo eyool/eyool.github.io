@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>海宁仰止科技有限公司</title>
+<style>
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+</style>
+<script>
+  var url="http://yzkjweb.oss-cn-hangzhou.aliyuncs.com/"+location.search;
+  alert(url);
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET",url,true);
+  xhr.onload = function (){
+     if(this.status == 200) {
+         var txt = this.responseText;
+         alert(txt);
+     }
+  }
+
+</script>
+</head>
+<body>
+
+</body>
+</html>
