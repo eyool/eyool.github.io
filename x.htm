@@ -1,32 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>海宁仰止科技有限公司</title>
-<style>
-    body {
-        width: 35em;
-        margin: 0 auto;
-        font-family: Tahoma, Verdana, Arial, sans-serif;
-    }
-</style>
-<script>
-  var url=location.search;
-  url="http://yzkjweb.oss-cn-hangzhou.aliyuncs.com/"+url.substr(1);    
-  alert(url);
-  var xhr = new XMLHttpRequest();
-  xhr.open("GET",url,true);
-  xhr.onload = function (){
-   alert(this.status);     
-     if(this.status == 200) {
-         var txt = this.responseText;
-         alert(txt);
-     }
-  }
-  xhr.send();
-</script>
+    <meta charset="GB2312">
+    <title>海宁仰止科技有限公司</title>
 </head>
+
 <body>
 
 </body>
+<script>
+ function loadScript(src, callback) {
+ var script = document.createElement('script'),
+ head = document.getElementsByTagName('head')[0];
+ script.type = 'text/javascript';
+ script.charset = 'GB2312';
+ script.src = src;
+ if (script.addEventListener) {
+  script.addEventListener('load', function () {
+   callback(xd);
+  }, false);
+ } else if (script.attachEvent) {
+  script.attachEvent('onreadystatechange', function () {
+   var target = window.event.srcElement;
+   if (target.readyState == 'loaded') {
+    callback(xd);
+   }
+  });
+ }
+ head.appendChild(script);
+}
+var url=location.search;
+url="http://yzkjweb.oss-cn-hangzhou.aliyuncs.com/"+url.substr(1);
+loadScript(url,function(a){
+ alert(a);
+ var js=JSON.parse(a);
+}); 
+</script>
+
+
 </html>
