@@ -17,17 +17,7 @@
   var xhr = new XMLHttpRequest();
   xhr.open("GET",url,true);
   xhr.onload = function (){
-     if(this.status == 200) {
-         var txt = this.responseText;
-         alert(txt);
-     }
-  }
-    var url=location.search;
-  url="http://yzkjweb.oss-cn-hangzhou.aliyuncs.com/"+url.substr(1);    
-  alert(url);
-  var xhr = new XMLHttpRequest();
-  xhr.open("GET",url,true);
-  xhr.onload = function (){
+   alert(this.status);     
      if(this.status == 200) {
          var txt = this.responseText;
          alert(txt);
