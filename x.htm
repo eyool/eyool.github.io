@@ -12,7 +12,7 @@
 </style>
 <script>
   var url=location.search;
-  url="http://yzkjweb.oss-cn-hangzhou.aliyuncs.com/"+url.subst(1);    
+  url="http://yzkjweb.oss-cn-hangzhou.aliyuncs.com/"+url.substr(1);    
   alert(url);
   var xhr = new XMLHttpRequest();
   xhr.open("GET",url,true);
