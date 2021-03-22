@@ -1,12 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="GB2312">
-    <title>海宁仰止科技有限公司</title>
+<meta charset="utf-8">
+
+<style> 
+.div-a{border:1px solid #e0e0e0} 
+.div-bf{float:left;width:196px;border:1px solid #e0e0e0}
+.div-bg{width:196px;border:1px solid #f0f0f0} 
+.div-c{background:#f0f0f0;border:1px solid #e0e0e0} 
+.div-l{background:#f0f0f0;text-align:left;float:left;width:398px;border:1px solid #e0e0e0} 
+.div-r{background:#f0f0f0;text-align:left;float:right;width:398px;border:1px solid #e0e0e0}
+</style> 
 </head>
 
-<body>
 
+<body>
+	<div style="width:800px;text-align:center;border:0px solid #808080">
+	<div id="name" class="div-a"></div>
+	<div id="addr" class="div-a"></div>	
+	<div id="tel" class="div-a"></div>		
+	<div id="time" class="div-a"></div>	
+	<div id="recv" class="div-l"></div>		
+	<div id="rtel" class="div-r"></div>		
+	<div id="id" class="div-l"></div>		
+	<div id="mark" class="div-r"></div>	
+  <div class="div-a">发货清单</div>	
+	<div id="prods" class="div-a" style="text-align:left"></div>	
+	<div id="tech" class="div-c" style="text-align:center"></div>			
+	</div>			
 </body>
 <script>
  function loadScript(src, callback) {
@@ -29,11 +50,60 @@
  }
  head.appendChild(script);
 }
-var url=location.search;
+function inbyid(id,d){
+document.getElementById(id).innerHTML=d;
+}
+function inbyclass(name,id,d){
+document.getElementByClassName(name)[id].innerHTML=d;
+}
+
+
+function show(sd){
+	inbyid("name",'<span style="font-size:26px;">'+sd.name+'</span>');
+	inbyid("addr",sd.addr);	
+	inbyid("tel",sd.tel);
+	inbyid("time",sd.time);	
+	inbyid("recv",sd.recv);
+	inbyid("rtel",sd.rtel);	
+	inbyid("id",sd.id);
+	inbyid("mark",sd.mark);		
+	
+	var np=Object.keys(sd.prod).length;
+	var sh="";
+	for(var i=0;i<np;i++){
+		sh=sh+'<div  class="div-c">';
+		sh=sh+"品名："+sd.prod[i].type+"  ";
+		sh=sh+"规格："+sd.prod[i].spec+"  ";
+		sh=sh+"颜色："+sd.prod[i].color+"<br />";
+		sh=sh+"数量："+sd.prod[i].num+"  ";
+		sh=sh+"总重："+sd.prod[i].tw+"  ";	
+		sh=sh+"总长："+sd.prod[i].tl+"  ";		
+		sh=sh+"总价："+sd.prod[i].price+"</div>";						
+		//inbyid("prods",sh);	
+		var num=sd.prod[i].num;
+		var lw=sd.prod[i].w;
+		var ll=sd.prod[i].l;	
+		var p=0;	
+		sh=sh+"<table><tr><td>";
+		for(var j=0;j<num;j++){
+			if((num%4)==0)
+			sh=sh+'<div  class="div-bg">'+lw[j]+'kg&nbsp;&nbsp;&nbsp;'+ll[j]+'米</div>';	
+			else
+			sh=sh+'<div  class="div-bf">'+lw[j]+'kg&nbsp;&nbsp;&nbsp;'+ll[j]+'米</div>';		
+			//inbyid("prods",sh);
+		}
+		//if((num%4)>0)
+		//	sh=sh+'<div>&nbsp;</div>';	
+		sh=sh+"</td></tr></table><br />";
+	}
+	inbyid("prods",sh);
+	inbyid("tech","<br />技术支持：海宁仰止科技有限公司 1538113556");
+}
+var url=location.search+'?'+Math.round(Math.random()*1000);
 url="http://yzkjweb.oss-cn-hangzhou.aliyuncs.com/"+url.substr(1);
 loadScript(url,function(a){
- alert(a);
- var js=JSON.parse(a);
+ //alert(a);
+ show(JSON.parse(a));
 }); 
 </script>
 
