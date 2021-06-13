@@ -44,8 +44,14 @@ function show(sd){
 	
 	var np=Object.keys(sd.d).length;
 	var sh="<div  class='div-c'><table><tr><td  style='width:200px'>缸号:</td><td style='width:200px'>数量</td><td style='width:200px'>长度(M)</td><td style='width:200px'>重量(kg)</td></tr>";
+	var an=0;
+	var aw=0;
+	var al=0;
 	for(var j=0;j<np;j++){
 		//sh=sh+'';
+		an+=parseInt(sd.d[j].n);
+		aw+=parseFloat(sd.d[j].w);
+		al+=parseFloat(sd.d[j].l);		
 		sh=sh+"<tr>"
 		sh=sh+"<td>"+sd.d[j].i+"</td>";
 		sh=sh+"<td>"+sd.d[j].n+"</td>";
@@ -69,7 +75,11 @@ function show(sd){
 		//	sh=sh+'<div>&nbsp;</div>';	
 	//	sh=sh+"</td></tr></table><br />";
 	}
-	sh=sh+"</table></div>";			
+	sh=sh+"<tr><td>合计</td>"		
+	sh=sh+"<td>"+an+"</td>";
+	sh=sh+"<td>"+al+"</td>";
+	sh=sh+"<td>"+aw+"</td>";
+	sh=sh+"</tr></table></div>";			
 	inbyid("prods",sh);
 	inbyid("tech","<br />技术支持：海宁仰止科技有限公司 1538113556");
 }
