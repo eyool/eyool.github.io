@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+
+<style> 
+.div-a{border:1px solid #e0e0e0} 
+.div-bf{float:left;width:195px;border:1px solid #e0e0e0}
+.div-bg{width:195px;border:1px solid #f0f0f0} 
+.div-c{background:#f0f0f0;text-align:center;border:1px solid #e0e0e0} 
+.div-l{background:#f0f0f0;text-align:left;float:left;width:394px;border:1px solid #e0e0e0} 
+.div-r{background:#f0f0f0;text-align:left;float:right;width:394px;border:1px solid #e0e0e0}
+</style> 
+</head>
+
+
+<body style="background:#f8f8f8;">
+	<div style="width:800px;text-align:center;border:0px solid #808080;margin:0 auto;background:#f8f8f8">
+	<div id="name" class="div-a" style="background:#0080f0"></div>
+ 	<div id="time" class="div-a"></div>	   	
+  <div class="div-a"><br /></>发货清单</div>	
+	<div id="prods" class="div-a" style="text-align:left"></div>	
+	<div id="tech" class="div-c" style="text-align:center"></div>			
+	</div>			
+</body>
+<script>
+function inbyid(id,d){
+document.getElementById(id).innerHTML=d;
+}
+function inbyclass(name,id,d){
+document.getElementByClassName(name)[id].innerHTML=d;
+}
+
+
+function show(sd){
+	inbyid("name",'<span style="font-size:26px;">'+sd.u+'</span>');
+	inbyid("time",sd.t);	
+//	inbyid("tel",sd.tel);
+//	inbyid("time",sd.time);	
+//	inbyid("recv",sd.recv);
+//	inbyid("rtel",sd.rtel);	
+//	inbyid("id",sd.id);
+//	inbyid("mark",sd.mark);		
+	
+	var np=Object.keys(sd.d).length;
+	var sh="<div  class='div-c'><table><tr><td  style='width:200px'>缸号:</td><td style='width:200px'>数量</td><td style='width:200px'>长度(M)</td><td style='width:200px'>重量(kg)</td></tr>";
+	for(var j=0;j<np;j++){
+		//sh=sh+'';
+		sh=sh+"<tr>"
+		sh=sh+"<td>"+sd.d[j].i+"</td>";
+		sh=sh+"<td>"+sd.d[j].n+"</td>";
+		sh=sh+"<td>"+sd.d[j].l+"</td>";
+		sh=sh+"<td>"+sd.d[j].w+"</td>";
+		sh=sh+"</tr>";				
+		//inbyid("prods",sh);	
+	//	var num=sd.prod[i].num;
+	//	var lw=sd.prod[i].w;
+	//	var ll=sd.prod[i].l;	
+	//	var p=0;	
+	//	sh=sh+"<table><tr><td>";
+	//	for(var j=0;j<num;j++){
+	//		if((num%4)==0)
+	//		sh=sh+'<div  class="div-bg">'+lw[j]+'kg&nbsp;&nbsp;&nbsp;'+ll[j]+'米</div>';	
+	//		else
+	//		sh=sh+'<div  class="div-bf">'+lw[j]+'kg&nbsp;&nbsp;&nbsp;'+ll[j]+'米</div>';		
+			//inbyid("prods",sh);
+	//	}
+		//if((num%4)>0)
+		//	sh=sh+'<div>&nbsp;</div>';	
+	//	sh=sh+"</td></tr></table><br />";
+	}
+	sh=sh+"</table></div>";			
+	inbyid("prods",sh);
+	inbyid("tech","<br />技术支持：海宁仰止科技有限公司 1538113556");
+}
+var url=location.search.substr(1);
+//alert(url);
+show(JSON.parse(decodeURI(url)));
+</script>
+
+
+</html>
