@@ -1,0 +1,4 @@
+url:eyool.com
+port:6666
+
+dtsend:10
