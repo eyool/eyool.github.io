@@ -1,3 +1,1 @@
-url:eyool.com
-port:6666
-dtsend:10
+def=url:eyool.com,port:6666,dtsend:10
